@@ -7,11 +7,11 @@
   "scripts": {
     "start": "node ./dist/index.js",
     "server": "nodemon ./dist/index.js ",
-    "dev": "concurrently \" npm run watch \"  \"npm run server \"",
+    "dev": "concurrently \" npm run watch \"  \"npm run server \" \"npm run watch-views\"",
     "watch": "tsc -w",
     "build": "tsc && run copy-files",
-    "copy-files":"copyfiles -u 1 \"src/views/**/*\" dist/",
-    "watch-views" :"nodemon --watch src/views -e ejs -x \"npm run copy-files\""
+    "copy-files": "copyfiles -u 1 \"src/views/**/*\" dist/",
+    "watch-views": "nodemon --watch src/views -e ejs -x \"npm run copy-files\""
   },
   "keywords": [],
   "author": "",
@@ -24,10 +24,12 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
+    "nodemailer": "^6.9.15",
     "prisma": "^5.20.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
+    "@types/ejs": "^3.1.5",
     "@types/express": "^5.0.0",
     "nodemon": "^3.1.7",
     "typescript": "^5.6.2"
