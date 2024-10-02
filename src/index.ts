@@ -20,9 +20,13 @@ app.get("/", async (req: Request, res: Response) => {
   const html = await ejs.renderFile(__dirname + `/views/emails/welcome.ejs`, {
     name: "Dilip purohit",
   });
-  await sendEmail("xeyiv81105@aiworldx.com", "testing", html);
+  try {
+    // const info = await sendEmail("xeyiv81105@aiworldx.com", "testing", html);
+    res.send("server is running");
+  } catch (error) {
+    res.json(error);
+  }
 
-  res.josn({ msg: "email sent successfully" });
 });
 
 app.listen(PORT, () => {

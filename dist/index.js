@@ -3,7 +3,6 @@ import "dotenv/config";
 import path from "path";
 import ejs from "ejs";
 import { fileURLToPath } from "url";
-import { sendEmail } from "./config/mail.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -15,8 +14,13 @@ app.get("/", async (req, res) => {
     const html = await ejs.renderFile(__dirname + `/views/emails/welcome.ejs`, {
         name: "Dilip purohit",
     });
-    await sendEmail("xeyiv81105@aiworldx.com", "testing", html);
-    res.josn({ msg: "email sent successfully" });
+    try {
+        // const info = await sendEmail("xeyiv81105@aiworldx.com", "testing", html);
+        res.send("server is running");
+    }
+    catch (error) {
+        res.json(error);
+    }
 });
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
