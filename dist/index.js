@@ -3,7 +3,6 @@ import "dotenv/config";
 import path from "path";
 import ejs from "ejs";
 import { fileURLToPath } from "url";
-import { emailQueue, emailQueueName } from "./jobs/Email-jobs.js";
 import Routes from "./routes/index.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -18,12 +17,12 @@ app.get("/", async (req, res) => {
         name: "Dilip purohit",
     });
     try {
-        const info = await emailQueue.add(emailQueueName, {
-            to: "xenab23370@adambra.com",
-            subject: "Testing email",
-            body: html,
-        });
-        // console.log("info", info);
+        // const info = await emailQueue.add(emailQueueName, {
+        //   to: "xenab23370@adambra.com",
+        //   subject: "Testing email",
+        //   body: html,
+        // });
+        // // console.log("info", info);
         res.send("server is running ");
     }
     catch (error) {

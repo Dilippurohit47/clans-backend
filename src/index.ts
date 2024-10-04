@@ -24,12 +24,12 @@ app.get("/", async (req: Request, res: Response) => {
     name: "Dilip purohit",
   });
   try {
-    const info = await emailQueue.add(emailQueueName, {
-      to: "xenab23370@adambra.com",
-      subject: "Testing email",
-      body: html,
-    });
-    // console.log("info", info);
+    // const info = await emailQueue.add(emailQueueName, {
+    //   to: "xenab23370@adambra.com",
+    //   subject: "Testing email",
+    //   body: html,
+    // });
+    // // console.log("info", info);
     res.send("server is running ");
   } catch (error) {
     console.log(error);

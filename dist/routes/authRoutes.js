@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
             },
         });
         if (user) {
-            return res.json(422).json({
+            return res.status(422).json({
                 erros: {
                     email: "Eamil already taken Please use another one ",
                 },
