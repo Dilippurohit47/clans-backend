@@ -20,9 +20,7 @@ app.set("views", path.resolve(__dirname, "./views"));
 app.use(Routes)
 
 app.get("/", async (req: Request, res: Response) => {
-  const html = await ejs.renderFile(__dirname + `/views/emails/welcome.ejs`, {
-    name: "Dilip purohit",
-  });
+  
   try {
     // const info = await emailQueue.add(emailQueueName, {
     //   to: "xenab23370@adambra.com",

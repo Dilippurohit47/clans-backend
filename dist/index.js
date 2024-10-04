@@ -1,7 +1,6 @@
 import express from "express";
 import "dotenv/config";
 import path from "path";
-import ejs from "ejs";
 import { fileURLToPath } from "url";
 import Routes from "./routes/index.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -13,9 +12,6 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "./views"));
 app.use(Routes);
 app.get("/", async (req, res) => {
-    const html = await ejs.renderFile(__dirname + `/views/emails/welcome.ejs`, {
-        name: "Dilip purohit",
-    });
     try {
         // const info = await emailQueue.add(emailQueueName, {
         //   to: "xenab23370@adambra.com",

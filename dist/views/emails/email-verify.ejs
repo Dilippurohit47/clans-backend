@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ("./partials/head") %>
+  <style>
+    .container {
+      background-color: lightblue;
+      border-radius: 20px;
+      padding: 10px;
+      width: 100%;
+      min-height: 100%;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <p>Hello <strong><%= name %> </strong></p>
+      <p>Please click on below link to verfiy your email</p>
+      <a href="<%= url%>" target="_blank"></a>
+      <p>
+        If youre not ale to click then please follow below url and open it in
+        new tabW
+      </p>
+      <p>If you have any query let us know in 2 daya with your numbers</p>
+      <p><%= url%></p>
+      <%- include ("./partials/footer") %>
+    </div>
+  </body>
+</html>
