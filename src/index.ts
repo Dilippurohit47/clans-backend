@@ -5,7 +5,7 @@ import ejs from "ejs";
 import { fileURLToPath } from "url";
 import { sendEmail } from "./config/mail.js";
 import { emailQueue, emailQueueName } from "./jobs/Email-jobs.js";
-
+import Routes from "./routes/index.js"
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app: Application = express();
@@ -16,6 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "./views"));
+
+app.use(Routes)
 
 app.get("/", async (req: Request, res: Response) => {
   const html = await ejs.renderFile(__dirname + `/views/emails/welcome.ejs`, {
