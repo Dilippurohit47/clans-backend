@@ -4,6 +4,7 @@ import path from "path";
 import ejs from "ejs";
 import { fileURLToPath } from "url";
 import { sendEmail } from "./config/mail.js";
+import { emailQueue, emailQueueName } from "./jobs/Email-jobs.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -21,14 +22,20 @@ app.get("/", async (req: Request, res: Response) => {
     name: "Dilip purohit",
   });
   try {
-    // const info = await sendEmail("xeyiv81105@aiworldx.com", "testing", html);
-    res.send("server is running");
+    const info = await emailQueue.add(emailQueueName, {
+      to: "xenab23370@adambra.com",
+      subject: "Testing email",
+      body: html,
+    });
+    // console.log("info", info);
+    res.send("server is running ");
   } catch (error) {
+    console.log(error);
     res.json(error);
   }
-
 });
 
+import "./jobs/Email-jobs.js";
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

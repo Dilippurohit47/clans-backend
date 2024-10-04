@@ -2,8 +2,8 @@ import { ConnectionOptions, DefaultJobOptions } from "bullmq";
 
 export const redisConnection: ConnectionOptions = {
   host: process.env.REDIS_HOST,
-  port: 6379,
-};
+  port: 8075,
+};    
 
 export const defaultQueueOptions: DefaultJobOptions = {
   removeOnComplete: {
